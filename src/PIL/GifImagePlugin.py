@@ -124,11 +124,7 @@ class GifImageFile(ImageFile.ImageFile):
 
         last_frame = self.__frame
         for f in range(self.__frame + 1, frame + 1):
-            try:
-                self._seek(f)
-            except EOFError:
-                self.seek(last_frame)
-                raise EOFError("no more images in GIF file")
+            self._seek(f)
 
     def _seek(self, frame):
 
